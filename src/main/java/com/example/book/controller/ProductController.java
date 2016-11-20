@@ -6,16 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.book.repository.InMemoryProductRepository;
+import com.example.book.service.ProductService;
 
 @Controller
 public class ProductController {
 	@Autowired
-	InMemoryProductRepository productRepository;
+	ProductService productService;
 
 	@ModelAttribute
 	public void populateInMemoryRepo(Model model) {
-		model.addAttribute("products", productRepository.getAllProducts());
+		model.addAttribute("products", productService.getAllProducts());
 	}
 
 	@RequestMapping("/products")
