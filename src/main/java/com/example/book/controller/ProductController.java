@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.book.service.ProductService;
 
 @Controller
+@RequestMapping("/products")
 public class ProductController {
 	@Autowired
 	ProductService productService;
@@ -18,8 +19,13 @@ public class ProductController {
 		model.addAttribute("products", productService.getAllProducts());
 	}
 
-	@RequestMapping("/products")
+	@RequestMapping()
 	public String list(Model model) {
+		return "products";
+	}
+
+	@RequestMapping("/all")
+	public String allProducts(Model model) {
 		return "products";
 	}
 }
