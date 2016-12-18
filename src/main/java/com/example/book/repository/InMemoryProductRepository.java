@@ -64,4 +64,8 @@ public class InMemoryProductRepository implements ProductRepository {
 	public List<Product> getAllProducts() {
 		return listOfProducts;
 	}
+
+	public void addProduct(Product product) {
+		listOfProducts.add(product);
+	}
 }
