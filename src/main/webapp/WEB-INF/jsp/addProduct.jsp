@@ -1,11 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/
 bootstrap.min.css">
+
 <title>Products</title>
 </head>
 <body>
@@ -22,8 +24,8 @@ bootstrap.min.css">
 			<fieldset>
 				<legend>Add new product</legend>
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="productId">Product
-						Id</label>
+					<label class="control-label col-lg-2 col-lg-2" for="productId"><spring:message
+							code="addProduct.form.productId.label" /></label>
 					<div class="col-lg-10">
 						<form:input id="productId" path="productId" type="text"
 							class="form:input-large" />
