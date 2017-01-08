@@ -8,6 +8,7 @@
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="com.example.book" />
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
@@ -18,4 +19,6 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 	</bean>
+	
+	<mvc:resources location="/resources/" mapping="/resource/**"/>
 </beans>
