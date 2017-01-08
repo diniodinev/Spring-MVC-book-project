@@ -34,7 +34,7 @@ charset=ISO-8859-1">
 						</div>
 						<img
 							src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
-							alt="image" style="width: px" />
+							alt="image" style="width:300px" />
 						<p>
 							<a href="<spring:url value="/products/product?id=${product.productId}"/>" class="btn btn-primary"> <span class="glyphicon-info-sign glyphicon" /></span> Details </a>
 						</p>

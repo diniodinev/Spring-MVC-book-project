@@ -42,7 +42,7 @@ bootstrap.min.css">
 			</div>
 			<img
 				src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
-				alt="image" style="width: px" />
+				alt="image" style="width:300px" />
 		</div>
 	</section>
 </body>
