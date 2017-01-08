@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;
@@ -31,9 +32,18 @@ charset=ISO-8859-1">
 							</p>
 							<p>Available ${product.unitsInStock} units in stock</p>
 						</div>
+						<img
+							src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+							alt="image" style="width: 100%" />
+						<p>
+							<a href="<spring:url value="/products/product?id=${product.productId}"/>" class="btn btn-primary"> <span class="glyphicon-info-sign glyphicon" /></span> Details </a>
+						</p>
 					</div>
+
 				</div>
 			</c:forEach>
+		</div>
+		<div class="col-md-5">
 		</div>
 	</section>
 </body>
