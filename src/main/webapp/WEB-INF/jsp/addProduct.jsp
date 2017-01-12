@@ -17,11 +17,12 @@ bootstrap.min.css">
 				<h1>Products</h1>
 				<p>Add products</p>
 			</div>
-			<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">logout</a>
+			<a href="<c:url value="/j_spring_security_logout" />"
+				class="btn btn-danger btn-mini pull-right">logout</a>
 		</div>
 	</section>
 	<section class="container">
-		<form:form modelAttribute="newProduct" class="form-horizontal">
+		<form:form modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new product</legend>
 				<div class="form-group">
@@ -50,6 +51,17 @@ bootstrap.min.css">
 						Refurbished
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="productImage"> <spring:message
+							code="addProdcut.form.productImage.label" />
+					</label>
+					<div class="col-lg-10">
+						<form:input id="productImage" path="productImage" type="file"
+							class="form:input-large" />
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnAdd" class="btn btn-primary"
