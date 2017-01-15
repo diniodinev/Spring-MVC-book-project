@@ -31,5 +31,14 @@
 		<property name="defaultLocale" value="en" />
 	</bean>
 
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="defaultViews">
+			<list>
+				<ref bean="jsonView" />
+				<ref bean="xmlView" />
+			</list>
+		</property>
+	</bean>
 	<mvc:resources location="/resources/" mapping="/resource/**" />
 </beans>
