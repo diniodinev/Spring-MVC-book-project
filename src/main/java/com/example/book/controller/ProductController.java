@@ -63,6 +63,8 @@ public class ProductController {
 	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, HttpServletRequest request,
 			BindingResult result) {
 		MultipartFile productImage = newProduct.getProductImage();
+		MultipartFile pdfFile = newProduct.getPdfFile();
+
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
@@ -72,6 +74,14 @@ public class ProductController {
 				throw new RuntimeException("Product Image saving failed", e);
 			}
 		}
+
+		if (pdfFile != null && !pdfFile.isEmpty()) {
+			try {
+				pdfFile.transferTo(new File(rootDirectory + "resources\\pdf\\" + newProduct.getProductId() + ".pdf"));
+			} catch (Exception e) {
+				throw new RuntimeException("Pdf saving failed", e);
+			}
+		}
 		productService.addProduct(newProduct);
 		return "redirect:/products";
 	}
@@ -79,6 +89,6 @@ public class ProductController {
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
-				"unitsInStock", "productImage");
+				"unitsInStock", "productImage", "pdfFile");
 	}
 }
