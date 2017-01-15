@@ -40,5 +40,23 @@
 			</list>
 		</property>
 	</bean>
+
+	<bean id="jsonView"
+		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="contentType" value="application/json" />
+	</bean>
+
+	<bean id="xmlView"
+		class="org.springframework.web.servlet.view.xml.MarshallingView">
+		<constructor-arg>
+			<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+				<property name="classesToBeBound">
+					<list>
+						<value>com.example.book.domain.Product</value>
+					</list>
+				</property>
+			</bean>
+		</constructor-arg>
+	</bean>
 	<mvc:resources location="/resources/" mapping="/resource/**" />
 </beans>
