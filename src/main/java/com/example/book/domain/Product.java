@@ -2,8 +2,15 @@ package com.example.book.domain;
 
 import java.math.BigDecimal;
 
+import javax.jws.WebMethod;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlRootElement
 public class Product {
 	private String productId;
 	private String name;
@@ -15,7 +22,9 @@ public class Product {
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String condition;
+	@JsonIgnore
 	private MultipartFile productImage;
+	@JsonIgnore
 	private MultipartFile pdfFile;
 
 	public Product() {
@@ -28,7 +37,6 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 
-	
 	public String getProductId() {
 		return productId;
 	}
@@ -108,8 +116,8 @@ public class Product {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-	
-	
+
+	@WebMethod(exclude = true)
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
@@ -118,6 +126,7 @@ public class Product {
 		this.productImage = productImage;
 	}
 
+	@WebMethod(exclude = true)
 	public MultipartFile getPdfFile() {
 		return pdfFile;
 	}
@@ -155,4 +164,4 @@ public class Product {
 	public String toString() {
 		return "Product [productId=" + productId + ", name=" + name + "]";
 	}
-}		
+}
