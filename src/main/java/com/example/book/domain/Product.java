@@ -22,6 +22,7 @@ public class Product {
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String condition;
+	
 	@JsonIgnore
 	private MultipartFile productImage;
 	@JsonIgnore
@@ -117,16 +118,17 @@ public class Product {
 		this.condition = condition;
 	}
 
-	@WebMethod(exclude = true)
+	@XmlTransient
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
+
 
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
 	}
 
-	@WebMethod(exclude = true)
+	@XmlTransient	
 	public MultipartFile getPdfFile() {
 		return pdfFile;
 	}
