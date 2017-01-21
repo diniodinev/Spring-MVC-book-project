@@ -6,6 +6,11 @@ charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/
 bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="<c:url value="/resource/css/productDetails.css"/>"
+	type="text/css" />
+
 <title>Products</title>
 </head>
 <body>
@@ -40,10 +45,46 @@ bootstrap.min.css">
 					</a>
 				</p>
 			</div>
-			<img
+			<img id="productDetailsImage"
 				src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
-				alt="image" style="width:300px" />
+				alt="image" style="width: 300px" />
+
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+
+				<!-- The Close Button -->
+				<span class="close"
+					onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+				<!-- Modal Content (The Image) -->
+				<img class="modal-content" id="modalImg">
+
+				<!-- Modal Caption (Image Text) -->
+				<div id="caption"></div>
+			</div>
 		</div>
 	</section>
 </body>
 </html>
+<script>
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	var img = document.getElementById('productDetailsImage');
+	var modalImg = document.getElementById("modalImg");
+	var captionText = document.getElementById("caption");
+	img.onclick = function() {
+		modal.style.display = "block";
+		modalImg.src = this.src;
+		captionText.innerHTML = this.alt;
+	}
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+</script>
