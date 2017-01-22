@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.book.domain.Product;
+import com.example.book.exception.ProductNotFoundException;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
@@ -45,8 +46,9 @@ public class InMemoryProductRepository implements ProductRepository {
 				break;
 			}
 		}
+
 		if (productById == null) {
-			throw new IllegalArgumentException("No products found with	the product id: " + productId);
+			throw new ProductNotFoundException("No products found with 	the product id: " + productId);
 		}
 		return productById;
 	}
