@@ -58,5 +58,10 @@
 			</bean>
 		</constructor-arg>
 	</bean>
+
+	<mvc:interceptors>
+		<bean class="com.example.book.interceptor.PerformanceMonitorInterceptor" />
+	</mvc:interceptors>
+
 	<mvc:resources location="/resources/" mapping="/resource/**" />
 </beans>
