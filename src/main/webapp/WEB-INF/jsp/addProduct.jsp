@@ -19,10 +19,14 @@ bootstrap.min.css">
 			</div>
 			<a href="<c:url value="/j_spring_security_logout" />"
 				class="btn btn-danger btn-mini pull-right">logout</a>
+			<div class="pull-right" style="padding-right: 50px">
+				<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
+			</div>
 		</div>
 	</section>
 	<section class="container">
-		<form:form modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+		<form:form modelAttribute="newProduct" class="form-horizontal"
+			enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new product</legend>
 				<div class="form-group">
@@ -61,7 +65,7 @@ bootstrap.min.css">
 							class="form:input-large" />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="pdfFile"> <spring:message
 							code="addProdcut.form.pdfFile.label" />
@@ -71,7 +75,7 @@ bootstrap.min.css">
 							class="form:input-large" />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnAdd" class="btn btn-primary"
