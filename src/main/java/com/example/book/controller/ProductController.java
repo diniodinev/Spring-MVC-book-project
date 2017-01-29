@@ -95,6 +95,11 @@ public class ProductController {
 		return "redirect:/products";
 	}
 
+	@RequestMapping("/invalidPromoCode")
+	public String invalidPromoCode() {
+		return "invalidPromoCode";
+	}
+
 	@ExceptionHandler(ProductNotFoundException.class)
 	public ModelAndView handleError(HttpServletRequest req, ProductNotFoundException exception) {
 		ModelAndView mav = new ModelAndView();
@@ -103,7 +108,7 @@ public class ProductController {
 		mav.addObject("url", req.getRequestURL() + "?" + req.getQueryString());
 		mav.setViewName("productNotFound");
 		return mav;
-	}	
+	}
 
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {

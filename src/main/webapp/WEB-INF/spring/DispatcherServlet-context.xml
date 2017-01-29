@@ -55,9 +55,14 @@
 
 	<mvc:interceptors>
 		<bean class="com.example.book.interceptor.PerformanceMonitorInterceptor" />
-		<bean class= "com.example.book.interceptor.AuditingInterceptor"/>
+		<bean class="com.example.book.interceptor.AuditingInterceptor" />
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="language" />
+		</bean>
+		<bean class="com.example.book.interceptor.PromoCodeInterceptor">
+			<property name="promoCode" value="OFF3R" />
+			<property name="errorRedirect" value="invalidPromoCode" />
+			<property name="offerRedirect" value="products" />
 		</bean>
 	</mvc:interceptors>
 
