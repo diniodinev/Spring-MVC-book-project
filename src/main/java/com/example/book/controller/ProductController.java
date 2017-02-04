@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,8 +70,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, HttpServletRequest request,
-			BindingResult result) {
+	public String processAddNewProductForm(@Valid @ModelAttribute("newProduct") Product newProduct,
+			BindingResult result, HttpServletRequest request) {
+		if (result.hasErrors()) {
+			return "addProduct";
+		}
+
 		MultipartFile productImage = newProduct.getProductImage();
 		MultipartFile pdfFile = newProduct.getPdfFile();
 

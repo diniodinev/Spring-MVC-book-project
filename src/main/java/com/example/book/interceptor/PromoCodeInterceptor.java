@@ -10,6 +10,7 @@ public class PromoCodeInterceptor extends HandlerInterceptorAdapter {
 	private String errorRedirect;
 	private String offerRedirect;
 
+	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String givenPromoCode = request.getParameterValues("promo") == null ? ""
