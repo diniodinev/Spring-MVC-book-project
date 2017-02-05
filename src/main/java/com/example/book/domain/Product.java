@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +27,9 @@ public class Product {
 	private BigDecimal unitPrice;
 	private String description;
 	private String manufacturer;
+	@NotEmpty(message = "{NotEmpty.Product.category.validation}")
 	private String category;
+	@Min(value=0,message = "{Min.Product.unitsInStock.validation}")
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;
