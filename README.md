@@ -1,5 +1,6 @@
 # SpringMVCSample
-Sample Spring MVC project
 
+Spring MVC Beginner’s Guide
 
-Add some changes
+The code in this project are based on the book Spring MVC Beginner’s Guide.
+- Some small modifications are made.
