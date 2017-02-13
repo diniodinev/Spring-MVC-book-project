@@ -13,30 +13,39 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.book.validation.ProductId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlRootElement
 public class Product {
 	@Pattern(regexp = "P[0-9]+", message = "{Pattern.Product.productId.validation}")
+	@ProductId
 	private String productId;
+	
 	@Size(min = 4, max = 50, message = "{Size.Product.name.validation}")
 	private String name;
+	
 	@Min(value = 0, message = "{Min.Product.unitPrice.validation}")
 	@Digits(integer = 8, fraction = 2, message = "{Digits.Product.unitPrice.validation}")
 	@NotNull(message = "{NotNull.Product.unitPrice.validation}")
 	private BigDecimal unitPrice;
+	
 	private String description;
 	private String manufacturer;
+	
 	@NotEmpty(message = "{NotEmpty.Product.category.validation}")
 	private String category;
+	
 	@Min(value=0,message = "{Min.Product.unitsInStock.validation}")
 	private long unitsInStock;
+	
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String condition;
 
 	@JsonIgnore
 	private MultipartFile productImage;
+	
 	@JsonIgnore
 	private MultipartFile pdfFile;
 
