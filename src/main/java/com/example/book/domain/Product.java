@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.book.validation.Category;
 import com.example.book.validation.ProductId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,6 +35,7 @@ public class Product {
 	private String manufacturer;
 	
 	@NotEmpty(message = "{NotEmpty.Product.category.validation}")
+	@Category
 	private String category;
 	
 	@Min(value=0,message = "{Min.Product.unitsInStock.validation}")
