@@ -25,12 +25,16 @@ import com.example.book.domain.Product;
 import com.example.book.exception.NoProductsFoundUnderCategoryException;
 import com.example.book.exception.ProductNotFoundException;
 import com.example.book.service.ProductService;
+import com.example.book.validation.UnitsInStockValidator;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	private UnitsInStockValidator unitsInStockValidator;	
 
 	@ModelAttribute
 	public void populateInMemoryRepo(Model model) {
@@ -117,6 +121,7 @@ public class ProductController {
 
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
+		binder.addValidators(unitsInStockValidator);
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
 				"unitsInStock", "productImage", "pdfFile", "language");
 	}
