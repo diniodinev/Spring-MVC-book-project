@@ -107,6 +107,7 @@ bootstrap.min.css">
 						<form:input id="productImage" path="productImage" type="file"
 							class="form:input-large" />
 					</div>
+					<form:errors path="productImage" cssClass="text-danger" />
 				</div>
 
 				<div class="form-group">
