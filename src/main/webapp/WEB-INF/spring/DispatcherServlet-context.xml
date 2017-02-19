@@ -5,7 +5,8 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<mvc:annotation-driven enable-matrix-variables="true" validator="validator"/>
+	<mvc:annotation-driven enable-matrix-variables="true"
+		validator="validator" />
 
 	<context:component-scan base-package="com.example.book" />
 
@@ -74,6 +75,16 @@
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+	<bean id="unitsInStockValidator" class="com.example.book.validation.UnitsInStockValidator" />
+
+	<bean id="productValidator" class="com.example.book.validation.ProductValidator">
+		<property name="springValidators">
+			<set>
+				<ref bean="unitsInStockValidator" />
+			</set>
+		</property>
 	</bean>
 
 	<mvc:resources location="/resources/" mapping="/resource/**" />
