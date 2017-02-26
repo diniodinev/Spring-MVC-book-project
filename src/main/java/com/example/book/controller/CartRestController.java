@@ -21,7 +21,7 @@ import com.example.book.service.CartService;
 import com.example.book.service.ProductService;
 
 @Controller
-@RequestMapping(value = "rest/cart")
+@RequestMapping(value = "/rest/cart")
 public class CartRestController {
 	@Autowired
 	private CartService cartService;

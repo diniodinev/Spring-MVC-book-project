@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;
@@ -11,6 +12,11 @@ bootstrap.min.css">
 	href="<c:url value="/resource/css/productDetails.css"/>"
 	type="text/css" />
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js">
+	
+</script>
+<script src="/store/resource/js/controllers.js"></script>
 <title>Products</title>
 </head>
 <body>
@@ -21,7 +27,7 @@ bootstrap.min.css">
 			</div>
 		</div>
 	</section>
-	<section class="container">
+	<section class="container" ng-app="cartApp">
 		<div class="row">
 			<div class="col-md-5">
 				<h3>${product.name}</h3>
@@ -39,11 +45,13 @@ bootstrap.min.css">
 					<strong>Availble units in stock </strong> : ${product.unitsInStock}
 				</p>
 				<h4>${product.unitPrice}USD</h4>
-				<p>
-					<a href="#" class="btn btn-warning btn-large"> <span
-						class="glyphicon-shopping-cart glyphicon"> </span> Order Now
-					</a>
+				<p ng-controller="cartCtrl">
+					<a class="btn btn-warning btn-large"
+					ng-click="addToCart('${product.productId}')"> <spanclass="glyphicon-shopping-cartglyphicon"> </span> Order Now </a>
 				</p>
+				<a href="<spring:url value="/cart"/>" class="btn btn-default">
+					<span class="glyphicon-hand-right glyphicon"></span> View Cart
+				</a>
 			</div>
 			<img id="productDetailsImage"
 				src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
